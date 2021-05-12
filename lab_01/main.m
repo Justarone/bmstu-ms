@@ -26,7 +26,7 @@ centers = [];
 for i = 1:(length(h.BinEdges) - 1)
     centers = [centers, (h.BinEdges(i + 1) + h.BinEdges(i)) / 2];
 end
-disp(centers);
+%disp(centers);
 hold on;
 bar(centers, heights, 1); % ширина относительная:)
 plot(x, f, 'g', 'LineWidth', 2);
