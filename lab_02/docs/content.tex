@@ -1,0 +1,107 @@
+\chapter{Задание}
+
+\textbf{Цель работы:} построение доверительных интервалов для математического ожидания и дисперсии нормальной случайной величины.
+
+\begin{enumerate}
+    \item Для выборки объема $n$ из нормальной генеральной совокупности $X$ реализовать в виде программы на ЭВМ
+        \begin{enumerate}
+            \item вычисление точечных оценок $\hat\mu(\vec X_n)$ и $S^2(\vec X_n)$ математического ожидания $MX$ и дисперсии $DX$ соответственно;
+            \item вычисление нижней и верхней границ $\underline\mu(\vec X_n)$, $\overline\mu(\vec X_n)$ для $\gamma$-доверительного интервала для математического ожидания $MX$;
+            \item вычисление нижней и верхней границ $\underline\sigma^2(\vec X_n)$, $\overline\sigma^2(\vec X_n)$ для $\gamma$-доверительного интервала для дисперсии $DX$;
+        \end{enumerate}
+    \item вычислить $\hat\mu$ и $S^2$ для выборки из индивидуального варианта;
+    \item для заданного пользователем уровня доверия $\gamma$ и $N$ – объёма выборки из индивидуального варианта:
+        \begin{enumerate}
+            \item на координатной плоскости $Oyn$ построить прямую $y = \hat\mu(\vec{x_N})$, также графики функций $y = \hat\mu(\vec x_n)$, $y = \underline\mu(\vec x_n)$ и $y = \overline\mu(\vec x_n)$ как функций объема $n$ выборки, где $n$ изменяется от 1 до $N$;
+            \item на другой координатной плоскости $Ozn$ построить прямую $z = S^2(\vec{x_N})$, также графики функций $z = S^2(\vec x_n)$, $z = \underline\sigma^2(\vec x_n)$ и $z = \overline\sigma^2(\vec x_n)$ как функций объема $n$ выборки, где $n$ изменяется от 1 до $N$.
+        \end{enumerate}
+\end{enumerate}
+
+\chapter{Теоретические сведения}
+
+\section{Определение $\gamma$-доверительного интервала для значения параметра распределения случайной величины}
+
+Дана случайная величина $X$, закон распределения которой известен с точностью до неизвестного параметра $\theta$.
+
+Интервальной оценкой с уровнем доверия $\gamma$ ($\gamma$-доверительной интервальной оценкой) параметра $\theta$ называют пару статистик $\underline{\theta}(\vec X), \overline{\theta}(\vec X)$ таких, что
+
+\begin{equation*}
+    P\{\underline{\theta}(\vec X)<\theta<\overline{\theta}(\vec X)\}=\gamma
+\end{equation*}
+
+Поскольку границы интервала являются случайными величинами, то для различных реализаций случайной выборки $\vec X$ статистики $\underline{\theta}(\vec X), \overline{\theta}(\vec X)$ могут принимать различные значения.
+
+Доверительным интервалом с уровнем доверия $\gamma$ ($\gamma$-доверительным интервалом) называют интервал $(\underline{\theta}(\vec x), \overline{\theta}(\vec x))$, отвечающий выборочным значениям статистик $\underline{\theta}(\vec X), \overline{\theta}(\vec X)$.
+
+\section{Формулы для вычисления границ \\ $\gamma$-доверительного интервала для математического ожидания и дисперсии нормальной случайной величины}
+
+Формулы для вычисления границ $\gamma$-доверительного интервала для математического ожидания:
+
+\begin{equation}
+\underline\mu(\vec X_n)=\overline X + \frac{S(\vec X)t^{St(n-1)}_{\frac{1-\gamma}{2}}}{\sqrt{n}}
+\end{equation}
+
+\begin{equation}
+\overline\mu(\vec X_n)=\overline X + \frac{S(\vec X)t^{St(n-1)}_{\frac{1+\gamma}{2}}}{\sqrt{n}}
+\end{equation}
+
+$\overline X$ -- точечная оценка математического ожидания;
+
+$S(\vec X) = \sqrtsign{S^2(\vec X)}$ -- квадратный корень из точечной оценки дисперсии;
+
+$n$ -- объем выборки;
+
+$\gamma$ -- уровень доверия;
+
+$t^{St(n-1)}_{\alpha}$ -- квантиль уровня $\alpha$ распределения Стьюдента с $n - 1$ степенями свободы.
+
+Формулы для вычисления границ $\gamma$-доверительного интервала для дисперсии:
+
+\begin{equation}
+\underline\sigma(\vec X_n)= \frac{(n-1)S^2(\vec X)}{t^{\chi^2(n-1)}_{\frac{1+\gamma}{2}}}
+\end{equation}
+
+\begin{equation}
+\overline\sigma(\vec X_n)= \frac{(n-1)S^2(\vec X)}{t^{\chi^2(n-1)}_{\frac{1-\gamma}{2}}}
+\end{equation}
+
+$S^2(\vec X)$ -- точечная оценка дисперсии;
+
+$n$ -- объем выборки;
+
+$\gamma$ -- уровень доверия;
+
+$t^{\chi^2(n-1)}_{\alpha}$ -- квантиль уровня $\alpha$ распределения $\chi^2(n-1)$ с $n - 1$ степенями свободы.
+
+\chapter{Результат работы}
+
+\section{Код программы}
+
+\lstinputlisting[style=mstyle]{../main.m}
+
+\section{Результаты расчётов}
+
+\begin{equation*}
+    \hat\mu(\vec x_n) = -2,0585\\
+\end{equation*}
+\begin{equation*}
+    S^2(\vec x_n) = 0,944\\
+\end{equation*}
+\begin{equation*}
+    \underline\mu(\vec x_n) = -2,2055\\
+\end{equation*}
+\begin{equation*}
+    \overline\mu(\vec x_n) = -1,9115\\
+\end{equation*}
+\begin{equation*}
+    \underline{S^2}(\vec x_n) = 0,7723\\
+\end{equation*}
+\begin{equation*}
+    \overline{S^2}(\vec x_n) = 1,1848\\
+\end{equation*}
+
+\imgw{130mm}{f1}{Прямая $y(n) = \hat\mu(\vec x_N)$, а также графики функций $y(n) = \underline\mu(\vec x_n)$, $y(n) = \overline\mu(\vec x_n)$, $y(n) = \hat\mu(\vec x_n)$ как функций объема $n$ выборки, где $n$ изменяется от 1 до $N$}
+
+\imgw{130mm}{f2}{Прямая $z(n) = \hat S^2(\vec x_N)$, а также графики функций $z(n) = \underline S^2(\vec x_n)$, $z(n) = \overline S^2(\vec x_n)$, $z(n) = \hat S^2(\vec x_n)$ как функций объема $n$ выборки, где $n$ изменяется от 1 до $N$ (1)}
+
+\imgw{125mm}{f3}{Прямая $z(n) = \hat S^2(\vec x_N)$, а также графики функций $z(n) = \underline S^2(\vec x_n)$, $z(n) = \overline S^2(\vec x_n)$, $z(n) = \hat S^2(\vec x_n)$ как функций объема $n$ выборки, где $n$ изменяется от 1 до $N$ (2, приближенный)}
